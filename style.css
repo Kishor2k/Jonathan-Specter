@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Prata&display=swap');
+
+*,*::before,*::after{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+:root{
+    --dark-clr: hsla(240, 5%, 4%, 1);
+    --gray-clr: hsla(0, 0%, 68%, 1);
+    --grayish-blue: hsla(228, 10%, 20%, 1);
+    --accent-clr: hsla(53, 96%, 65%, 1);
+    --accent-light-clr:hsl(53, 100%, 74%);
+    --light-clr: hsla(0, 0%, 100%, 1);
+    --ff-inter: 'Inter', sans-serif;
+    --ff-prata: 'Prata', serif;
+    --gap:30px;
+}
+body{
+    font-family:var(--ff-inter);
+    background:var(--dark-clr);
+    color:var(--gray-clr);
+    font-size:1.125rem;
+}
+/* composition */
+h1{
+    font-family:var(--ff-prata);
+    color:var(--light-clr);
+    font-size: clamp(32px, 2vw + 1.5rem, 56px);
+}
+h2{
+    font-family:var(--ff-prata);
+    color:var(--light-clr);
+    font-size: clamp(22px, 2vw + 1rem, 32px);
+}
+p{
+    line-height:28px;
+    letter-spacing:.5px;
+}
+a{
+    text-decoration: none;
+    color:var(--gray-clr);
+    transition:.3s ease-in-out;
+}
+a:hover{
+    color:var(--accent-clr);
+}
+li{
+    list-style:none;
+}
+img{
+    display: block;
+    width:100%;
+}
+.container{
+    max-width:1140px;
+    margin-inline:auto;
+}
+.flex{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: var(--jc, space-between);
+    align-items: center;
+    gap:var(--gap);
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-content: center;
+    gap:var(--gap);
+}
+/* .grid > *{
+    padding:0 clamp(20px, 2vw + .5rem, 30px);
+} */
+section:not(.header){
+    padding:80px clamp(20px, 2vw + .5rem, 40px);
+}
+/* component */
+.cta{
+    background:var(--accent-clr);
+    font-family: var(--ff-prata);
+    font-size:1.125rem;
+    border:0;
+    padding:10px 30px;
+    cursor:pointer;
+    transition:background .2s ease;
+}
+.cta:hover{
+    background:var(--accent-light-clr);
+}
+.card-link{
+    display: inline-block;
+    font-family: var(--ff-prata);
+    color:var(--light-clr);
+    font-size:1.8rem;
+    padding:15px 0;
+}
+.padding{
+    padding:20px 0;
+}
+.padding-2{
+    padding:3rem 0;
+}
+.mt-1{
+    margin-top: .6rem;
+}
+.mt-2{
+    margin-top: 1.2rem;
+}
+
+/* elements */
+.header{
+    padding:40px clamp(20px, 2vw + .5rem, 40px);
+}
+.logo{
+    font-family:var(--ff-prata);
+    color:var(--light-clr);
+}
+.navbar{
+    position: relative;
+}
+.hamburger{
+    width:30px;
+    height:30px;
+    display: grid;
+    align-items: center;
+    display: none;
+}
+.links{
+    width:60%;
+}
+/* intro */
+.intro-text{
+    max-width:720px;
+}
+/* work */
+.card-link i{
+    margin-left: 5px;
+}
+/* clients */
+.clients{
+    --jc:center;
+}
+/* info */
+.info{
+    background: var(--grayish-blue);
+}
+/* contact */
+.contact p{
+    max-width:600px;
+}
+/* footer */
+footer{
+    --gap:20px;
+    background: var(--grayish-blue);
+    padding:30px clamp(20px, 2vw + .5rem, 40px);
+}
+
+@media screen and (max-width:810px){
+    .links{
+        opacity:0;
+        pointer-events: none;
+        position: absolute;
+        right:0;
+        top:40px;
+        background:var(--grayish-blue);
+        width:100%;
+        padding:40px;
+        box-shadow:5px 5px 20px rgba(0,0,0,.2);
+        transform:translateY(-10px);
+        transition:opacity, transform .3s ease-out;
+    }
+    .links.active{
+        pointer-events: all;
+        transform:translateY(0px);
+        opacity: 1;
+    }
+    .hamburger{
+        cursor: pointer;
+        display: grid;
+    }
+    .links.flex{
+        flex-direction: column;
+    }
+    .menu.flex{
+        flex-direction: column;
+    }
+    .card-two{
+        margin-top:20px;
+    }
+}
+@media screen and (max-width:500px){
+    p{
+        letter-spacing: 0;
+        font-size:16px;
+    }
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        justify-content: center;
+        gap:var(--gap);
+    }
+    .header{
+        padding:20px clamp(20px, 2vw + .5rem, 40px);
+    }
+    section:not(.header){
+        padding:60px clamp(20px, 2vw + .5rem, 40px);
+    }
+}
